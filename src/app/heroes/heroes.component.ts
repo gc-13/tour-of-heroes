@@ -3,6 +3,7 @@ import { Hero } from '../hero';
 import { HEROES } from '../mock-heroes';
 
 import { HeroService } from '../hero.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-heroes',
@@ -25,7 +26,8 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes().subscribe( heroes =>
+      this.heroes = heroes);
   }
 
 }

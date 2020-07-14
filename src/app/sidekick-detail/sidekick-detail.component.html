@@ -1,6 +1,10 @@
 <div *ngIf="sidekick">
     <h2>{{sidekick.name | uppercase}} Details</h2>
-    <div><span>ID: </span>{{sidekick.id}}</div>
+    <div><span>ID: </span>{{sidekick.id}}
+    </div>
+    <a routerLink="/detail/{{hero.id}}">
+        <span>Hero: </span> {{hero.name}}
+    </a>
     <div>
         <label>Name:
             <input [(ngModel)]="sidekick.name" placeholder="sidekick"/>

@@ -9,25 +9,25 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const heroes = [
       { id: 11, name: 'Dr Nice',
-      sidekickIds: [] },
+      sidekickIds: [211, 311] },
       { id: 12, name: 'Narco',
-      sidekickIds: []  },
+      sidekickIds: [212]  },
       { id: 13, name: 'Bombasto',
-      sidekickIds: []  },
+      sidekickIds: [213]  },
       { id: 14, name: 'Celeritas',
-      sidekickIds: []  },
+      sidekickIds: [214]  },
       { id: 15, name: 'Magneta',
-      sidekickIds: []  },
+      sidekickIds: [215]  },
       { id: 16, name: 'RubberMan',
-      sidekickIds: []  },
+      sidekickIds: [216]  },
       { id: 17, name: 'Dynama',
-      sidekickIds: []  },
+      sidekickIds: [217]  },
       { id: 18, name: 'Dr IQ',
-      sidekickIds: []  },
+      sidekickIds: [218]  },
       { id: 19, name: 'Magma',
-      sidekickIds: []  },
+      sidekickIds: [219, 319, 419]  },
       { id: 20, name: 'Tornado',
-      sidekickIds: []  }
+      sidekickIds: [220, 320]  }
     ];
 
     const sidekicks = [

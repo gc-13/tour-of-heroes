@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Hero } from '../hero';
+import { Sidekick } from '../sidekick';
 import { HeroService } from '../hero.service';
+import { SidekickService } from '../sidekick.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -13,12 +15,14 @@ import { HeroService } from '../hero.service';
 export class HeroDetailComponent implements OnInit {
 
   hero: Hero;
+  sidekicks: Sidekick[];
 
   constructor(
     //Holds information about the route to this instance of HDC
     private route: ActivatedRoute,
     //Allows us to get the data of this hero from the remote server
     private heroService: HeroService,
+    private sidekickService: SidekickService,
     //Used to return to the previous page that navigated here
     private location: Location
   ) { }
@@ -32,7 +36,11 @@ export class HeroDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     //uses Hero Service to retrieve that hero data using their id
     this.heroService.getHero(id)
-        .subscribe( hero => this.hero = hero);
+        .subscribe( hero => {
+          this.hero = hero;
+          this.sidekickService.getSidekicks()
+            .subscribe( sidekicks => this.sidekicks = sidekicks.filter( s => hero.sidekickIds.includes(s.id)));
+        });
   }
 
   goBack(): void {

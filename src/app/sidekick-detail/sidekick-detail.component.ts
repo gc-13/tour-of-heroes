@@ -5,20 +5,25 @@ import { Location } from '@angular/common';
 import { Sidekick } from '../sidekick';
 import { SidekickService } from '../sidekick.service';
 
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
+
 @Component({
-  selector: 'app-sidekcik-detail',
+  selector: 'app-sidekcik-detail', 
   templateUrl: './sidekick-detail.component.html',
   styleUrls: ['./sidekick-detail.component.css']
 })
 export class SidekickDetailComponent implements OnInit {
 
   sidekick: Sidekick;
+  hero: Hero;
 
   constructor(
     //Holds information about the route to this instance of HDC
     private route: ActivatedRoute,
-    //Allows us to get the data of this hero from the remote server
+    //Allows us to get the data of this sidekick from the remote server
     private sidekickService: SidekickService,
+    private heroService: HeroService,
     //Used to return to the previous page that navigated here
     private location: Location
   ) { }
@@ -32,7 +37,11 @@ export class SidekickDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     //uses Hero Service to retrieve that hero data using their id
     this.sidekickService.getSidekick(id)
-        .subscribe( sidekick => this.sidekick = sidekick);
+        .subscribe( sidekick => {
+          this.sidekick = sidekick;
+          this.heroService.getHero(sidekick.heroId)
+            .subscribe( hero => this.hero = hero)
+        });
   }
 
   goBack(): void {

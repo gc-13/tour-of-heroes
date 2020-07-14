@@ -8,18 +8,36 @@ import { Hero } from './hero';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const heroes = [
-      { id: 11, name: 'Dr Nice' },
-      { id: 12, name: 'Narco' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
+      { id: 11, name: 'Dr Nice',
+      sidekickIds: [] },
+      { id: 12, name: 'Narco',
+      sidekickIds: []  },
+      { id: 13, name: 'Bombasto',
+      sidekickIds: []  },
+      { id: 14, name: 'Celeritas',
+      sidekickIds: []  },
+      { id: 15, name: 'Magneta',
+      sidekickIds: []  },
+      { id: 16, name: 'RubberMan',
+      sidekickIds: []  },
+      { id: 17, name: 'Dynama',
+      sidekickIds: []  },
+      { id: 18, name: 'Dr IQ',
+      sidekickIds: []  },
+      { id: 19, name: 'Magma',
+      sidekickIds: []  },
+      { id: 20, name: 'Tornado',
+      sidekickIds: []  }
     ];
-    return {heroes};
+
+    const sidekicks = [
+      {id: 211, heroId: 11, name: "sidekick1"},
+      {id: 212, heroId: 11, name: "sidekick1"},
+      {id: 213, heroId: 11, name: "sidekick1"},
+      {id: 214, heroId: 11, name: "sidekick1"},
+      {id: 215, heroId: 11, name: "sidekick1"},
+    ]
+    return {heroes, sidekicks};
   }
 
   // Overrides the genId method to ensure that a hero always has an id.

@@ -1,1 +1,11 @@
-<p>sidekicks works!</p>
+<h2>Sidekicks</h2>
+<ul class="sidekicks">
+    <li *ngFor="let sidekick of sidekicks">
+        <a routerLink="/detail/{{sidekick.id}}">
+            <span class="badge">{{sidekick.id}}</span> {{sidekick.name}}
+        </a>
+        <button class="delete" title="delete sidekick"
+        (click)="delete(sidekick)">x</button>
+    </li>
+</ul>
+ 

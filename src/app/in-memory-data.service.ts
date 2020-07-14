@@ -31,11 +31,20 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const sidekicks = [
-      {id: 211, heroId: 11, name: "sidekick1"},
-      {id: 212, heroId: 11, name: "sidekick1"},
-      {id: 213, heroId: 11, name: "sidekick1"},
-      {id: 214, heroId: 11, name: "sidekick1"},
-      {id: 215, heroId: 11, name: "sidekick1"},
+      {id: 211, heroId: 11, name: "Mr.Mean"},
+      {id: 311, heroId: 11, name: "Mrs.Mean"},
+      {id: 212, heroId: 12, name: "Narco Sidekick"},
+      {id: 213, heroId: 13, name: "Bombasto Jr."},
+      {id: 214, heroId: 14, name: "Super Guy"},
+      {id: 215, heroId: 15, name: "Magneto"},
+      {id: 216, heroId: 16, name: "EraserHead"},
+      {id: 217, heroId: 17, name: "Explosion"},
+      {id: 218, heroId: 18, name: "Sir Stupid"},
+      {id: 219, heroId: 19, name: "Lava Girl"},
+      {id: 319, heroId: 19, name: "Shark Boy"},
+      {id: 419, heroId: 19, name: "Volcano Man"},
+      {id: 220, heroId: 20, name: "Twister"},
+      {id: 320, heroId: 20, name: "Tornado"} 
     ]
     return {heroes, sidekicks};
   }

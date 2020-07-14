@@ -23,4 +23,17 @@ export class SidekicksComponent implements OnInit {
         .subscribe( sidekicks => this.sidekicks = sidekicks);
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.sidekickService.addSidekick( {name} as Sidekick)
+      .subscribe(sidekick => this.sidekicks.push(sidekick));
+  }
+
+  delete(sidekick: Sidekick): void {
+    this.sidekicks = this.sidekicks.filter(s => s !== sidekick);
+    this.sidekickService.deleteSidekick(sidekick).subscribe();
+  }
+
 }
+ 

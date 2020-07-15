@@ -2,8 +2,9 @@
     <h2>{{sidekick.name | uppercase}} Details</h2>
     <div><span>ID: </span>{{sidekick.id}}
     </div>
-    <a routerLink="/detail/{{hero.id}}">
-        <span>Hero: </span> {{hero.name}}
+     Hero:
+     <a routerLink="/detail/{{hero.id}}" style="text-decoration: none" class="hero">
+         <span class="hero">{{hero.name}}</span>
     </a>
     <div>
         <label>Name:

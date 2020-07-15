@@ -1,4 +1,4 @@
-/* HeroDetailComponent's private CSS styles */
+ /* SidekickDetailComponent's private CSS styles */
 label {
     display: inline-block;
     width: 3em;
@@ -28,8 +28,8 @@ label {
     color: #ccc;
     cursor: auto;
   }
-  
-  .sidekicks li {
+
+  .hero {
     color : #333;
     position: relative;
     cursor: pointer;
@@ -39,13 +39,13 @@ label {
     border-radius: 4px; 
   }
   
-  .sidekicks li:hover {
+  .hero :hover {
     color: #607D8B;
     /* background-color: #DDD; */
     left: .1em;
   }
   
-  .sidekicks a {
+  .hero a {
     color: #333;
     text-decoration: none;
     position: relative;
@@ -53,7 +53,12 @@ label {
     width: 250px;
   }
   
-  .sidekicks a:hover {
+  .hero a:hover {
     color: #607D8B;
     text-decoration: none
   }
+
+  .hero a:visited {
+     text-decoration: none; 
+     color: #333;
+    }

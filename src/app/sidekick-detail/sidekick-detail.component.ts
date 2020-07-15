@@ -2,44 +2,45 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Hero } from '../hero';
 import { Sidekick } from '../sidekick';
-import { HeroService } from '../hero.service';
 import { SidekickService } from '../sidekick.service';
 
-@Component({
-  selector: 'app-hero-detail',
-  templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.css']
-})
-export class HeroDetailComponent implements OnInit {
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
 
+@Component({
+  selector: 'app-sidekcik-detail', 
+  templateUrl: './sidekick-detail.component.html',
+  styleUrls: ['./sidekick-detail.component.css']
+})
+export class SidekickDetailComponent implements OnInit {
+
+  sidekick: Sidekick;
   hero: Hero;
-  sidekicks: Sidekick[];
 
   constructor(
     //Holds information about the route to this instance of HDC
     private route: ActivatedRoute,
-    //Allows us to get the data of this hero from the remote server
-    private heroService: HeroService,
+    //Allows us to get the data of this sidekick from the remote server
     private sidekickService: SidekickService,
+    private heroService: HeroService,
     //Used to return to the previous page that navigated here
     private location: Location
   ) { }
 
   ngOnInit(): void {
-    this.getHero();
+    this.getSidekick();
   }
 
-  getHero(): void {
+  getSidekick(): void {
     //extracts the id of the hero from the url, converts it to a number
     const id = +this.route.snapshot.paramMap.get('id');
     //uses Hero Service to retrieve that hero data using their id
-    this.heroService.getHero(id)
-        .subscribe( hero => {
-          this.hero = hero;
-          this.sidekickService.getSidekicks()
-            .subscribe( sidekicks => this.sidekicks = sidekicks.filter( s => hero.sidekickIds.includes(s.id)));
+    this.sidekickService.getSidekick(id)
+        .subscribe( sidekick => {
+          this.sidekick = sidekick;
+          this.heroService.getHero(sidekick.heroId)
+            .subscribe( hero => this.hero = hero)
         });
   }
 
@@ -49,7 +50,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.heroService.updateHero(this.hero)
+    this.sidekickService.updateSidekick(this.sidekick)
       .subscribe(() => this.goBack());
   }
 

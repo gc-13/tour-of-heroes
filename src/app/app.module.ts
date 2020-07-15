@@ -13,6 +13,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { SidekicksComponent } from './sidekicks/sidekicks.component';
+import { SidekickDetailComponent } from './sidekick-detail/sidekick-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    SidekicksComponent,
+    SidekickDetailComponent
   ],
   imports: [
     BrowserModule,

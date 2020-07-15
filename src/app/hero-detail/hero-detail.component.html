@@ -1,6 +1,15 @@
 <div *ngIf="hero">
     <h2>{{hero.name | uppercase}} Details</h2>
     <div><span>ID: </span>{{hero.id}}</div>
+    <div>Sidekicks: 
+        <ul class="sidekicks">
+            <li *ngFor="let sidekick of sidekicks">
+                <a routerLink="/sidekickdetail/{{sidekick.id}}">
+                    <span>{{sidekick.name}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
     <div>
         <label>Name:
             <input [(ngModel)]="hero.name" placeholder="name"/>

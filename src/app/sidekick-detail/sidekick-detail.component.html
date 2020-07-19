@@ -1,17 +1,25 @@
 <div *ngIf="sidekick">
     <h2>{{sidekick.name | uppercase}} Details</h2>
-    <div><span>ID: </span>{{sidekick.id}}
-    </div>
+    <div><span>ID: </span>{{sidekick.id}}</div>
      Hero:
      <a routerLink="/detail/{{hero.id}}" style="text-decoration: none" class="hero">
          <span class="hero">{{hero.name}}</span>
     </a>
+</div>
+<div>
     <div>
-        <label>Name:
-            <input [(ngModel)]="sidekick.name" placeholder="sidekick"/>
-        </label>
+    <label>Name:
+        <input [(ngModel)]="sidekick.name" placeholder="sidekick"/>
+    </label>
+    </div>
+    <div>
+        <span>Change Hero? </span>
+        <select [(ngModel)]="newHeroId">
+            <option value=undefined></option>
+            <option *ngFor="let h of otherHeroes" value={{h.id}}>{{h.name}}</option>
+        </select>
     </div>
     <button (click)="goBack()">go back</button>
     <button (click)="save()">save</button>
 </div>
- 
+  

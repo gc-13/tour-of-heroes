@@ -1,4 +1,14 @@
 <h2>Sidekicks</h2>
+<div>
+    <label>Sidekick Name:
+        <input #sidekickName />
+    </label> 
+    <span>Change Hero? </span>
+        <select [(ngModel)]="newHeroId">
+            <option *ngFor="let h of heroes" value={{h.id}}>{{h.name}}</option>
+        </select>
+    <button (click)="add(sidekickName.value); sidekickName.value=''">add</button>
+</div>
 <ul class="sidekicks">
     <li *ngFor="let sidekick of sidekicks">
         <a routerLink="/sidekickdetail/{{sidekick.id}}">
@@ -8,4 +18,5 @@
         (click)="delete(sidekick)">x</button>
     </li>
 </ul>
+ 
  

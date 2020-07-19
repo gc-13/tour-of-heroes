@@ -17,6 +17,8 @@ export class SidekickDetailComponent implements OnInit {
 
   sidekick: Sidekick;
   hero: Hero;
+  otherHeroes: Hero[];
+  newHeroId: number = undefined;
 
   constructor(
     //Holds information about the route to this instance of HDC
@@ -40,8 +42,15 @@ export class SidekickDetailComponent implements OnInit {
         .subscribe( sidekick => {
           this.sidekick = sidekick;
           this.heroService.getHero(sidekick.heroId)
-            .subscribe( hero => this.hero = hero)
+            .subscribe( hero => this.hero = hero);
+          this.getOtherHeroes();
         });
+  }
+
+  getOtherHeroes(): void {
+    this.heroService.getHeroes().subscribe( heroes => {
+      this.otherHeroes = heroes.filter(h => h.id !== this.hero.id);
+    });
   }
 
   goBack(): void {
@@ -50,8 +59,13 @@ export class SidekickDetailComponent implements OnInit {
   }
 
   save(): void {
+    if(this.newHeroId !== undefined){
+      this.sidekick.heroId = this.newHeroId;
+    }
     this.sidekickService.updateSidekick(this.sidekick)
-      .subscribe(() => this.goBack());
+      .subscribe(() =>{
+        this.goBack()
+      });
   }
 
 }
